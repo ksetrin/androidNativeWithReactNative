@@ -1,2 +1,3 @@
+rootProject.name = 'androidNativeWithReactNative'
+
 include ':app'
-rootProject.name = 'myAwesomeApplication'

@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClick(View view) {
         // Set up the intent
-        Intent i = new Intent(getApplicationContext(), ReactMainActivity.class);
+        Intent i = new Intent(getApplicationContext(), MyReactActivity.class);
         Log.d("ReactNative", "MainActivity onAddRNClick");
         // Launch It
         startActivity(i);
