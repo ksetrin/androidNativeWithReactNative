@@ -4,6 +4,10 @@ import com.facebook.react.ReactActivity;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 
 import com.facebook.react.ReactInstanceManager;
@@ -35,8 +39,18 @@ public class MyReactActivity extends Activity implements DefaultHardwareBackBtnH
         // 注意这里的MyReactNativeApp必须对应“index.js”中的
         // “AppRegistry.registerComponent()”的第一个参数
         mReactRootView.startReactApplication(mReactInstanceManager, "androidNativeWithReactNative", null);
-
-        setContentView(mReactRootView);
+        FrameLayout frameLayout = new FrameLayout(this);
+        frameLayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        TextView textView = new TextView(this);
+        textView.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 100));
+        textView.setText("Native view");
+        textView.setBackgroundColor(0xffffff00);
+        frameLayout.addView(textView);
+        FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        layoutParams.topMargin = 100;
+        mReactRootView.setLayoutParams(layoutParams);
+        frameLayout.addView(mReactRootView, -1, layoutParams);
+        setContentView(frameLayout);
     }
 
     @Override
